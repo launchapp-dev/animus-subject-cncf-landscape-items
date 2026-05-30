@@ -8,7 +8,7 @@ export default defineConfig({
   clean: true,
   splitting: false,
   minify: true,
-  noExternal: ["@launchapp-dev/animus-plugin-sdk"],
+  noExternal: ["@launchapp-dev/animus-plugin-sdk", "yaml"],
   outExtension: () => ({ js: ".cjs" }),
   banner: {
     js: "#!/usr/bin/env node",
