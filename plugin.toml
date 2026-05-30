@@ -1,0 +1,49 @@
+schema = "animus.plugin.v1"
+name = "animus-subject-cncf-landscape-items"
+version = "0.1.0"
+plugin_kind = "subject_backend"
+description = "CNCF Landscape items subject backend plugin for Animus"
+protocol = "stdio"
+
+[binary]
+default = "animus-subject-cncf-landscape-items"
+
+[capabilities]
+streaming = false
+progress = false
+cancellation = false
+methods = [
+  "subject/list",
+  "subject/get",
+  "subject/schema",
+  "cncf.landscape_item/list",
+  "cncf.landscape_item/get",
+  "cncf.landscape_item/schema",
+  "health/check",
+]
+subject_kinds = ["cncf.landscape_item"]
+
+[[env]]
+key = "CNCF_LANDSCAPE_URL"
+description = "Optional CNCF landscape.yml URL. Defaults to the official cncf/landscape raw landscape.yml."
+required = false
+
+[[env]]
+key = "CNCF_QUERY"
+description = "Optional local text query across item names, descriptions, paths, project maturity, URLs, and metadata."
+required = false
+
+[[env]]
+key = "CNCF_CATEGORY"
+description = "Optional category or subcategory text filter."
+required = false
+
+[[env]]
+key = "CNCF_PROJECT"
+description = "Optional CNCF project maturity filter, such as sandbox, incubating, graduated, or none."
+required = false
+
+[[env]]
+key = "CNCF_LIMIT"
+description = "Optional maximum item count from 1 to 1000. Defaults to 100."
+required = false
